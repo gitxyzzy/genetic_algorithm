@@ -1,0 +1,4 @@
+BasedOnStyle: WebKit
+BreakConstructorInitializers: BeforeComma
+BreakBeforeBraces: Attach
+NamespaceIndentation: All
