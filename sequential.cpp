@@ -26,7 +26,7 @@ int img_channels = 4;
 #define CANVAS_SZ (img_width * img_height * img_channels)
 
 // genetic algorithm params
-int drawings_per_group = 3;
+int drawings_per_group = 5;
 
 int min_points_per_polygon = 3;
 int max_points_per_polygon = 6;

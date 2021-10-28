@@ -26,7 +26,7 @@ int img_channels = 4;
 #define CANVAS_SZ (img_width * img_height * img_channels)
 
 // genetic algorithm params
-int drawings_per_group = 3;
+int drawings_per_group = 5;
 
 int min_points_per_polygon = 3;
 int max_points_per_polygon = 6;
@@ -107,6 +107,7 @@ void move_polygon(Polygon& p) {
     int max_x = 0, min_x = INT_MAX;
     int max_y = 0, min_y = INT_MAX;
 
+#pragma omp parallel default(none) shared(p) reduction(max:max_x,max_y) reduction(min:min_x,min_y)
     for (cv::Point& pt : p.points) {
         max_x = std::max(max_x, pt.x);
         min_x = std::min(min_x, pt.x);
