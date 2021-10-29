@@ -278,6 +278,7 @@ cv::Mat render(const Drawing& d) {
 double compute_fitness(const cv::Mat& img1, const cv::Mat& img2) {
     double e = 0;
     const int n = CANVAS_SZ;
+#pragma omp parallel for default(none) shared(n, img1, img2) reduction(+:e)
     for (int i = 0; i < n; i++) {
         e += std::abs(img1.data[i] - img2.data[i]);
     }
